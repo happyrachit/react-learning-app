@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default class UserList extends Component {
 
   render() {
-    const {user} = this.props;
+    const {user,onDelete,onEdit} = this.props;
 
     return (
       <tr>
@@ -23,9 +23,12 @@ export default class UserList extends Component {
           <span className="pull-left hand-icon">
             <Link to={`UserDetails/${user.login}`} target="_blank">
               <i className="fa fa-file"></i>
-            </Link> | <i className="fa fa-pencil" data-toggle="modal" data-target="#exampleModal"></i> | <span
+            </Link> | <i className="fa fa-pencil" data-toggle="modal" data-target="#myModal" onClick={(event)=>{
+              event.preventDefault();
+              onEdit(user);
+            }}></i> | <span
                 onClick={() => {
-                  this.props.onDelete(user);
+                  onDelete(user);
                 }}
               ><i className="fa fa-trash-o" ></i></span>
           </span>

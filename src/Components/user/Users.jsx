@@ -10,12 +10,12 @@ export default class Users extends Component {
     this.state = {
       tableHeader: ["#", "User", "Login", "Node ID","Action"],
       users: [],
-      modalShow: false,
+      editUserDetails: {},
     };
   }
 
   render() {
-    const {tableHeader,users} = this.state;
+    const {tableHeader,users,editUserDetails} = this.state;
     return (
       <>
         <h4>Users</h4>
@@ -29,13 +29,14 @@ export default class Users extends Component {
                   key={user.id}
                   user={user}
                   onDelete={this.handleDelete}
+                  onEdit={this.handleEdit}
                 />
               );
             })}
           </tbody>
         </table>
 
-        <Modal />
+        <Modal userDetails={editUserDetails} handleOnChange={this.handleOnChange} />
       </>
     );
   }
@@ -65,9 +66,14 @@ export default class Users extends Component {
     }
   };
 
-  // showModal = (user) =>{
-  //   this.setState({
+  handleEdit = (user) => {
+    this.setState({
+      editUserDetails : user,
+    })
+  };
 
-  //   });
-  // }
+  handleOnChange(login){
+    console.log(login);
+  }
+
 }

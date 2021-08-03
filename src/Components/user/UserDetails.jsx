@@ -10,16 +10,17 @@ export class UserDetails extends Component {
   }
 
   render() {
+    const {user} = this.state;
     return (
       <div className="card" style={{ width: "18rem" }}>
         <img
           className="card-img-top"
-          src={this.state.user.avatar_url}
+          src={user.avatar_url}
           alt="user"
         />
         <div className="card-body">
-          <h5 className="card-title">{this.state.user.id} - {this.state.user.login}</h5>
-          <p className="card-text">{this.state.user.node_id}</p>
+          <h5 className="card-title">{user.id} - {user.login}</h5>
+          <p className="card-text">{user.node_id}</p>
         </div>
       </div>
     );

@@ -5,8 +5,6 @@ export class EditUserDetails extends Component {
     super(props);
 
     this.state = {
-      prevLogin: "",
-      login: "",
       users:[],
     };
   }
