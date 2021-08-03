@@ -1,38 +1,35 @@
 import React, { Component } from "react";
-import Modal from "./Components/Modal";
-import EditUserDetails from "./EditUserDetails";
-import Users from "./Users";
+import Modal from "../common/Modal";
+import TableHeader from "../common/TableHeader";
+import UserList from "../user/UserList";
 
-export default class UserList extends Component {
+export default class Users extends Component {
   constructor(props) {
     super(props); //calling super class's constructor
 
     this.state = {
+      tableHeader: ["#", "User", "Login", "Node ID","Action"],
       users: [],
       modalShow: false,
     };
   }
 
   render() {
+    const {tableHeader,users} = this.state;
     return (
       <>
-        <h4>User List</h4>
-        {this.state.modalShow ? <EditUserDetails /> : ""}
-
+        <h4>Users</h4>
         <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">User</th>
-              <th scope="col">Login</th>
-              <th scope="col">Node ID</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+          <TableHeader tableHeader={tableHeader}></TableHeader>
+
           <tbody>
-            {this.state.users.map((user) => {
+            {users.map((user) => {
               return (
-                <Users key={user.id} user={user} onDelete={this.handleDelete} />
+                <UserList
+                  key={user.id}
+                  user={user}
+                  onDelete={this.handleDelete}
+                />
               );
             })}
           </tbody>

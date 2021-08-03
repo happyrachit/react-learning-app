@@ -24,10 +24,10 @@ class NavBar extends Component {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-
+                
                 <li className="nav-item">
                   <NavLink
-                    to="/UserList"
+                    to="/Users"
                     className="nav-link"
                     activeClassName="active"
                   >
